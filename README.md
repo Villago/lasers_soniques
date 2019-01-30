@@ -23,3 +23,17 @@
 	•	Comme première ébacuhe, nous tenterons d'analyser une source audio (intensité, registre, etc.) dans Max qui déclenchera une séquence on-off (un à la suite des autres) de laser dans Arduino. 
  	•	Par la suite, nous essaieront de synchroniser un BPM reçu via Ableton Link dans Max avec une séquence Arduino.
 	•	Une extension possible au projet serait de déclencher les séquences Arduino à l'aide des messages DMX.
+
+
+############## Commentaires ###############
+
+Excellent projet! 
+
+Volker Böhm a développé (ou adapté) plusieurs objets d'analyse audio pour MaxMSP. Ils sont disponible sur son site web:
+
+https://vboehm.net/downloads/
+
+Comme les objets externes sont acceptés dans max4live, ce serait un bon point de départ pour commencer l'exploration de l'analyse du signal audio.
+
+10/10
+
