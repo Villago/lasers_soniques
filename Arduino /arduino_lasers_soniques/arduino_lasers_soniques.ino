@@ -1,8 +1,12 @@
-// Villagomez - Projet de laser sonique 24 février 2019 
-// Ce code à été écrit par Martin Marier et est disponible dans le cadre du cours de Lutherie audionumérique et système interactif   
+// Villagomez - Projet de laser sonique 25 mars 2019 
+// Ce code à été écrit à la base par Martin Marier et est disponible dans le cadre du cours de Lutherie audionumérique et système interactif. Plusieurs modifications y seront apportés.  
 // Plusieurs lignes sont facultatives pour l'instant car elle servent à lire des valeurs d'un capteur analogique sur l'entrée A0 du Arduino Uno.
 
+
+// Au cours de la semaine du 25 mars 2019, je vais commander les pièces nécessaires pour la réalisation de mon projet ce qui me permettra de ''driver'' plus de sorties PWM en communicant en I2C.
+
 #include "Thread.h"
+
 // On va utiliser un Thread pour lire les valeurs du capteur.  De cette façon,
 // on n'a pas besoin de delay (qui suspendrait aussi la réception des paquets SLIP).
 
@@ -14,7 +18,7 @@ const byte ESC_END=220;
 const byte ESC_ESC=221;
 
 const int sensorPin = 0; //L'entrée analogique utilisée.
-const int outPins[] = { 9, 10, 11 }; // Les pins utilisées en sortie (PWM).
+const int outPins[] = { 9, 10, 11, 3, 5, 6 }; // Les pins utilisées en sortie (PWM).
 
 // La taille maximum d'un paquet SLIP.  Ce nombre doit être plus grande que le
 // paquet le plus grand attendu.
