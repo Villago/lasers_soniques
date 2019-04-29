@@ -23,7 +23,14 @@
 	•	Comme première ébacuhe, nous tenterons d'analyser une source audio (intensité, registre, etc.) dans Max qui déclenchera une séquence on-off (un à la suite des autres) de laser dans Arduino. 
  	•	Par la suite, nous essaieront de synchroniser un BPM reçu via Ableton Link dans Max avec une séquence Arduino.
 	•	Une extension possible au projet serait de déclencher les séquences Arduino à l'aide des messages DMX.
-
+    7    Implémentation
+    •    Mon objectif principal était de me familiarisé avec l'environnement de travail Max pour pouvoir dévelloper une série d'outil de performance live et d'analyses audio pouvant communiquer avec un micro contrôleur de type Arduino. Par la suite,  le protocole  OSC à  été rajouté afin de communiquer en Wifi entre Max et un micro controleur Arduino Wifi MKR 1010. Pour résumer, j'ai quelques plugins M4L qui communique avec un patch central Maxpat qui envoie un message OSC avec 24 arguments i.
+    • Également, j'ai voulu tester l'éfficacité de la communication Midi entre Ableton Live et Max à l'aide de port midi [from Max 1 & 2]
+    8   Test et Maintenance
+    •   Plusieurs problèmes sont survenus tout au long du projet 
+    •  
+    •  Problème de flux de données. Le MKR Wifi cesssait toute communication après avoir reçu 
+    
 
 ############## Commentaires ###############
 

@@ -1,0 +1,176 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>MUS 2322 - Cours 6 : Techniques d'analyse</title>
+   <LINK href="style2322.css" rel="stylesheet" type="text/css"> 
+</head>
+
+<center>
+<b><font size=-1>
+<a href="cours05_FFT.html">Cours 5</a> | 
+<a href="cours07_Examen.html">Cours 7</a> | 
+<a href="index.html">MUS 2322</a> | 
+<a href="http://www.musique.umontreal.ca/">Facult&eacute; de musique</a> |
+<a href="http://www.umontreal.ca/">Universit&eacute; de Montr&eacute;al</a>
+</font></b>
+</center>
+
+<hr>
+
+<center>
+<p class="cours">Cours 6 : Techniques d'analyse du signal audio
+</center>
+
+<ol type="A">
+
+<li><p class="titre">Information v&eacute;hicul&eacute;e par le son</p>
+<DIV class="texte" align=justify>
+<p>Le son contient plusieurs types d'information qui peuvent &ecirc;tre extraites du signal et 
+s&eacute;par&eacute;es les unes des autres pour r&eacute;v&eacute;ler certains attributs de la source sonore.  
+Cette information peut r&eacute;v&eacute;ler, par exemple, dans quel registre se situe le signal, s'il est
+harmonique ou bruit&eacute;, si le signal est constant ou s'il pr&eacute;sente des variations d'amplitude, etc...
+Une fois isol&eacute;s, ces informations peuvent &ecirc;tre utilis&eacute;es pour le contr&ocirc;le de certains param&egrave;tres 
+de traitement, sur le signal lui-m&ecirc;me ou sur une autre source, ou pour contr&ocirc;ler un processus de synth&egrave;se. 
+<p>Souvent, la quantit&eacute; de valeur qui repr&eacute;sente un param&egrave;tre du son est &eacute;norme, d&eacute;file rapidement 
+et contient des artefacts ind&eacute;sirables. Il faudra donc parfois filtrer le flux de donn&eacute;es sortant de l'algorithme 
+de d&eacute;tection.
+<p>Nous allons &eacute;tudier 4 algorithmes de d&eacute;tection de signal: 
+<p>- Une d&eacute;tection d'amplitude, qui permettra de faire du suivi d'enveloppe ou de d&eacute;tecter les attaques.
+<br>- Une analyse du nombre de passages &agrave; z&eacute;ro dans un temps fixe (zero-crossing), r&eacute;v&eacute;lant la quantit&eacute; de 
+bruit dans le signal.
+<br>- Une d&eacute;tection de hauteur, pour d&eacute;terminer la fr&eacute;quence fondamentale d'un son harmonique.
+<br>- Une analyse du centro&iuml;d, le centre de gravit&eacute; spectrale. 
+</DIV>
+
+<ol>
+
+<li><p class="soustitre">D&eacute;tection d'amplitude
+<p><b>Suivi d'enveloppe</b>
+<CENTER><p><img SRC="images/amplitude.jpg" height=177></CENTER>
+<DIV class="texte" align=justify>
+<p>L'objet <b>average~</b> calcul l'amplitude moyenne d'un signal audio sur une dur&eacute;e d&eacute;termin&eacute;e 
+en nombres d'&eacute;chantillons. Il peut fonctionner selon trois modes: bipolaire, RMS et absolue. Le mode bipolaire
+retient les valeurs d'amplitude positives et n&eacute;gatives du signal, tandis que les modes RMS et absolue retiennent la valeur
+absolue du signal. Bien que le mode RMS soit g&eacute;n&eacute;ralement le favoris pour la d&eacute;tection d'amplitude, le mode absolue
+fonctionne, dans la plupart des cas, aussi bien et est beaucoup plus l&eacute;ger en temps de calcul. On d&eacute;termine la p&eacute;riode
+de temps sur laquelle la moyenne est calcul&eacute;e en premier argument ou par un entier dans l'entr&eacute;e de gauche de l'objet. 
+<p>Une conversion du signal audio en signal data est effectu&eacute;e avec l'objet <b>snapshot~</b>, dont la fr&eacute;quence de sortie, en ms,
+est sp&eacute;cifi&eacute;e par un argument ou une valeur dans l'entr&eacute;e de droite. Ceci nous permet d'afficher la s&eacute;quence
+de valeurs d'amplitude correspondant au signal analys&eacute;. On constate, sur le premier graphique de l'image ci-dessus, 
+que la s&eacute;quence de valeurs qui sortent de l'analyse comporte beaucoup de sauts et de variations. Il serait pr&eacute;f&eacute;rable
+de lisser la suite d'information avant de l'utiliser &agrave; des fins musicales. Pour cela, il suffit de lui appliquer un filtre passe-bas,
+afin d'&eacute;liminer les fines variations et de retrouver une courbe beaucoup plus souple, d&eacute;nu&eacute;e d'artefacts. Voici
+le filtre utilis&eacute;, dans le sous-patcher "lowpass", pour obtenir la courbe du deuxi&egrave;me graphique: 
+
+<CENTER><p><img SRC="images/passebas.jpg" height=166></CENTER>
+<p>Il s'agit d'un filtre passe-bas FIR d'ordre 17. C'est-&agrave;-dire que pour d&eacute;terminer la valeur d'amplitude courante, une
+moyenne est calcul&eacute;e &agrave; partir des 17 derni&egrave;res valeurs d'amplitude &agrave; &ecirc;tre pass&eacute;es dans le syst&egrave;me. Les diff&eacute;rences
+entre les diff&eacute;rentes valeurs en sont amoindries pour donner une belle courbe bien lisse.
+<p><b>D&eacute;tection des attaques</b>
+<CENTER><p><img SRC="images/attaque.jpg" height=244></CENTER>
+<p>La d&eacute;tection des attaques est un processus assez difficile &agrave; faire fonctionner efficacement. Selon les situations
+et les types de sources sonores, les algorithmes ne r&eacute;agissent pas toujours de la m&ecirc;me fa&ccedil;on. Il faudra donc ajuster
+certains param&egrave;tres en fonction de chaque situation. L'algorithme ci-dessus est relativement simple, il compare la valeur
+d'amplitude courante &agrave; celle qui la pr&eacute;c&eacute;dait et si elle est plus grande de plus d'un certain seuil, cela
+signifie que l'amplitude &agrave; fait un bond vers le haut, alors un bang signal la pr&eacute;sence d'une attaque. Les deux
+param&egrave;tres &agrave; ajuster en fonction des situations sont la fen&ecirc;tre d'analyse de <b>average~</b> et le seuil minimum entre 
+deux valeurs d'amplitude successives. Une grande fen&ecirc;tre d'analyse permettra plus facilement de grands &eacute;carts d'amplitude 
+entre deux valeurs, et un petit seuil donnera plus d'attaques qu'un grand seuil.
+<li><p class="soustitre">Zero-crossing, la quantit&eacute; de bruit dans la signal
+<DIV class="texte" align=justify>
+<img SRC="images/zerox.jpg" height=118 align=LEFT>
+<p>Un algorithme de d&eacute;tection des passages &agrave; z&eacute;ro r&eacute;v&egrave;le principalement la quantit&eacute; de bruit pr&eacute;sent dans le signal. En effet, 
+le bruit se situant g&eacute;n&eacute;ralement dans les hautes fr&eacute;quences, le signal croisera le z&eacute;ro beaucoup plus souvent 
+qu'un signal harmonique "propre" dont la note fondamentale est relativement grave. 
+<CENTER><p><img SRC="images/cross.jpg" height=106></CENTER>
+<p>L'objet <b>zerox~</b> compte le nombre de passage &agrave; z&eacute;ro &agrave; l'int&eacute;rieur d'un <i>signal vector size</i>. Donc, 
+pour un vecteur de 64 &eacute;chantillons, un sinus de 22050 Hz (fr&eacute;quence de Nyquist) passera &agrave; z&eacute;ro 32 fois dans un 
+vecteur. Un sinus de 11025 Hz passera 16 fois, &agrave; 5500 Hz, 8 fois, etc. 
+<p>Ce type d'information est tr&egrave;s facile &agrave; 
+obtenir, co&ucirc;te tr&egrave;s peu en temps de calcul et est g&eacute;n&eacute;ralement assez fiable. Il est donc ais&eacute; pour un 
+fl&ucirc;tiste, par exemple, de contr&ocirc;ler la quantit&eacute; de souffle qu'il y a dans le son pour modifier des param&egrave;tres ou 
+pour passer d'une section &agrave; l'autre.
+
+<li><p class="soustitre">D&eacute;tection de la hauteur
+<DIV class="texte" align=justify>
+<p>L'objet <b>fiddle~</b> effectue une analyse FFT pour estimer la fr&eacute;quence fondamentale d'un signal harmonique. Plusieurs
+param&egrave;tres sont &agrave; sp&eacute;cifier pour faciliter la t&acirc;che de l'analyse. D'abord, 4 arguments sont n&eacute;cessaires pour que <b>fiddle~</b>
+fonctionne:
+
+<p>1- La taille de la FFT, entre 128 et 2048 (1024 par d&eacute;faut). Ce facteur fixe le compromis entre la r&eacute;solution
+temporelle et la r&eacute;solution fr&eacute;quentielle. Plus la taille est grande, mieux les fr&eacute;quences graves seront d&eacute;tect&eacute;es, 
+avec toutefois un plus grand d&eacute;lai.
+<p>2- Le nombre de sorties de hauteur-amplitude en continue, entre 1 et 3 (1 par d&eacute;faut). Ces sorties se situent
+tout de suite apr&egrave;s la deuxi&egrave;me sortie, qui signal la pr&eacute;sence d'une attaque. Cela permet de recevoir les valeurs
+de hauteur et d'amplitude des trois premi&egrave;res harmoniques du signal analys&eacute;. 
+<p>3- Le troisi&egrave;me argument sp&eacute;cifie le nombre d'harmoniques que <b>fiddle~</b> tente de d&eacute;tecter, entre 1 et 100
+(20 par d&eacute;faut). Ce param&egrave;tre sert de guide &agrave; l'analyse sur la nature du signal &agrave; suivre.
+<p>4- Le nombre de pairs hauteur-amplitude qui sortiront, sous format liste avec un index devant chaque pair, par la 
+derni&egrave;re sortie. Cela permet de r&eacute;cup&eacute;rer un plus grande nombre d'harmoniques que le deuxi&egrave;me argument. (0 par d&eacute;faut)
+<CENTER><p><img SRC="images/fiddle.jpg" height=66></CENTER>
+
+<p>De plus, pour contr&ocirc;ler plus finement les param&egrave;tres de l'analyse, <b>fiddle~</b> prend plusieurs messages:
+
+<p><b>amp-range</b> [float, float]: la premi&egrave;re valeur repr&eacute;sente le seuil d'amplitude sous lequel les sorties de hauteur-amplitude en 
+continue cessent d'&eacute;mettrent des signaux. La deuxi&egrave;me valeur repr&eacute;sente le seuil d'amplitude minimum pour qu'une note 
+MIDI soit envoy&eacute;e par la premi&egrave;re sortie. 
+<p><b>vibrato</b> [float, float]: La premi&egrave;re valeur repr&eacute;sente une dur&eacute;e en ms au cours de laquelle la hauteur ne 
+doit pas d&eacute;vier plus d'une fraction de ton (deuxi&egrave;me valeur) de la hauteur moyenne estim&eacute;e, pour que celle-ci soit report&eacute;e
+comme une nouvelle note dans la premi&egrave;re sortie. 
+<p><b>reattack</b> [float, float]: Si l'amplitude du signal augmente de plus que la deuxi&egrave;me valeur, exprim&eacute;e en Bels (10 Bels = 1dB), 
+dans une dur&eacute;e sp&eacute;cifi&eacute;e, en ms, par la premi&egrave;re valeur, une attaque est report&eacute;e dans la deuxi&egrave;me sortie, et la note est r&eacute;p&eacute;t&eacute;e dans 
+la premi&egrave;re sortie.   
+<p><b>npartial</b> [float]: Cette valeur sp&eacute;cifie quelle harmonique devrait avoir une amplitude deux fois plus faible que
+la premi&egrave;re. C'est un message tr&egrave;s important pour aider <b>fiddle~</b> &agrave; bien estimer la hauteur.
+
+<p>Pour donner des r&eacute;sultats efficace, cet objet doit &ecirc;tre tr&egrave;s finement ajust&eacute;. De plus, tout comme pour la d&eacute;tection d'amplitude,
+les valeurs que donne <b>fiddle~</b> doivent &ecirc;tre nettoy&eacute;es, avec des filtres passe-bas, des <b>speedlim</b> ou des conditions,
+pour &ecirc;tre d'une quelconque utilit&eacute;.
+
+<p>Pour t&eacute;l&eacute;charger l'objet <b>fiddle~</b> de Miller Puckette: 
+<br><a href="http://crca.ucsd.edu/~tapel/software.html">http://crca.ucsd.edu/~tapel/software.html</a>
+
+<p>L'objet <b>pitch~</b> est une extension de l'objet <b>fiddle~</b> qui donne le contr&ocirc;le sur de nouveaux param&egrave;tres, tels le choix de
+la fen&ecirc;tre d'analyse, une taille de FFT plus grande et le taux de recouvrement. Il est sensiblement plus pr&eacute;cis que <b>fiddle~</b> et 
+fonctionne essentiellement de la m&ecirc;me fa&ccedil;on.
+
+<p>Pour t&eacute;l&eacute;charger l'objet <b>pitch~</b> de Tristan Jehan:
+<br><a href="http://web.media.mit.edu/~tristan/maxmsp.html">http://web.media.mit.edu/~tristan/maxmsp.html</a>
+
+
+<li><p class="soustitre">Centro&iuml;d, le centre de gravit&eacute; spectral
+<DIV class="texte" align=justify>
+<p>Le centre de gravit&eacute; spectral donne une indication sur la brillance d'un son. Ind&eacute;pendamment de la fr&eacute;quence fondamentale
+de la source, le centre de gravit&eacute; spectral se situe g&eacute;n&eacute;ralement vers des fr&eacute;quences un peu plus aigues. Plus le son est riche 
+en hautes fr&eacute;quences, plus le centre de gravit&eacute; spectral est &eacute;lev&eacute;. 
+<p>Le centro&iuml;d peut &ecirc;tre calcul&eacute; &agrave; partir d'une analyse FFT en effectuant la somme des valeurs d'amplitude
+de chaque "bin" multipli&eacute;e par leur index FFT, le tout divis&eacute; par la somme de l'amplitude de chaque "bin".
+<CENTER><p><img SRC="images/centroid.jpg" height=69></CENTER>
+<p>o&ugrave; <i>a</i> repr&eacute;sente l'amplitude, <i>n</i> l'index de la FFT et <i>N</i> la taille de la FFT. Cette formule
+indique &agrave; quelle "bin" se situe le centre de gravit&eacute; spectral. Pour obtenir un r&eacute;sultat en Hz, il suffit de
+multiplier cette valeur par la largeur des "bin" de la FFT, qui &eacute;quivaut &agrave; la fr&eacute;quence d'&eacute;chantillonnage divis&eacute;e par 
+la taille de la FFT (<i>sr</i> / FFTsize).
+<img SRC="images/recamp.jpg" height=128 align=RIGHT>
+<p>Pour calculer le centro&iuml;d dans Max/MSP, il faut tout d'abord effectuer une analyse FFT sur le signal et enregistrer
+les valeurs d'amplitude dans une m&eacute;moire. Pour d&eacute;marrer automatiquement l'enregistrement, on utilise l'objet 
+<b>dspstate~</b>, qui envoie la valeur 1 lorsque l'audio est allum&eacute; et 0 lorsqu'il est &eacute;teint. On boucle
+l'enregistrement pour toujours avoir en mains les valeurs d'amplitude courantes. Il faut s'assurer que la taille du <b>buffer~</b> est
+rigoureusement &eacute;gale &agrave; la taille de la FFT + 1 &eacute;chantillons. Ce processus peut-&ecirc;tre automatis&eacute; avec l'objet 
+<b>fftinfo~</b>.
+<CENTER><p><img SRC="images/sizebuf.jpg" height=145></CENTER>
+<p>Voici le moteur de l'analyse. L'objet <b>edge~</b> est utilis&eacute; pour d&eacute;tecter le passage &agrave; z&eacute;ro de l'index de la FFT, et 
+pour d&eacute;clencher le calcul du centro&iuml;d de cette fen&ecirc;tre d'analyse. L'objet <b>peek~</b> donne la valeur contenu dans une 
+m&eacute;moire pour un index donn&eacute;, en &eacute;chantillons. Un <b>uzi</b> g&eacute;n&egrave;re en rafale la quantit&eacute; d'index 
+n&eacute;cessaires au calcul et les sommes sont effectu&eacute;es simplement avec une addition en boucle. Au d&eacute;but de chaque fen&ecirc;tre
+d'analyse, les additions en boucle sont remise &agrave; z&eacute;ro. 
+<CENTER><p><img SRC="images/centro~.jpg" height=338></CENTER>
+
+<center>
+<b><font size=-1>
+<a href="cours05_FFT.html">Cours 5</a> | 
+<a href="cours07_Examen.html">Cours 7</a> | 
+<a href="index.html">MUS 2322</a> | 
+<a href="http://www.musique.umontreal.ca/">Facult&eacute; de musique</a> |
+<a href="http://www.umontreal.ca/">Universit&eacute; de Montr&eacute;al</a>
+</font></b>
+</center>
