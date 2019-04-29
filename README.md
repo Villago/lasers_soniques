@@ -27,10 +27,12 @@
     •    Mon objectif principal était de me familiarisé avec l'environnement de travail Max pour pouvoir dévelloper une série d'outil de performance live et d'analyses audio pouvant communiquer avec un micro contrôleur de type Arduino. Par la suite,  le protocole  OSC à  été rajouté afin de communiquer en Wifi entre Max et un micro controleur Arduino Wifi MKR 1010. Pour résumer, j'ai quelques plugins M4L qui communique avec un patch central Maxpat qui envoie un message OSC avec 24 arguments i.
     • Également, j'ai voulu tester l'éfficacité de la communication Midi entre Ableton Live et Max à l'aide de port midi [from Max 1 & 2]
     8   Test et Maintenance
-    •   Plusieurs problèmes sont survenus tout au long du projet 
-    •  
-    •  Problème de flux de données. Le MKR Wifi cesssait toute communication après avoir reçu 
+    •   Plusieurs problèmes sont survenus tout au long du projet. 
+    •  Tout au long de la session j'ai eu des problèmes avec l'environmement Max. J'ai décidé d'acheter la version étudiante complète de Max pour obtenir accès aux sorties audio et port midi From Max 1&2. La version de Max et plus stable que M4L sur OS X Mojave. Je ne sais pas si c'est une question de programmation, mais à plusieurs reprises mon patch M4L se refermait toute de suite dès que je l'ouvrais. Afin de ne pas utiliser de version de Max différente dans le même projet j'ai modifié l'app Max  utiliser dans les préférences de Ableton, ce qui a réduit une partie de problème de stabilité.
+    •  Problème de flux de données: Le MKR Wifi cesssait toute communication après avoir reçu trop de valeur 12bit sur 24 cannaux. Avec l'objet [speedlim] j'ai été capable de limiter le flux de donnée à un certain débit par millisecondes, ce qui a réglé mon problème.
     
+    Extras : 
+    Au long de la session je me suis rajouté dans le site de Cycling74 et le groupe facebook Max Msp, donc pour moi ça été une introduction à la communauté de Max et celle de Arduino.
 
 ############## Commentaires ###############
 

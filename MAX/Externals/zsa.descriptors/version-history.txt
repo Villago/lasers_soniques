@@ -1,0 +1,158 @@
+Zsa.descriptors Version History
+by Mikhail Malt (Ircam) & Emmanuel Jourdan (e--j dev)
+
+
+*******************
+1.2.0 (rev:70a3c9a230955699ed9b2919eebf3d111fcf786d): 17 October 2018
+- zsa.descriptors is now 64 bits only
+- zsa.descriptors fully compatible with Max 8
+
+
+*******************
+1.1.2 (rev:f9d861a549149a586f1588c4af7ab1e14dbd5848): 27 July 2016
+
+- zsa.dist: fixed Kullback Leibler distance (#32), Thanks Thomas!
+- snippets are properly categorized
+- minor documentation udpate
+
+
+*******************
+1.1.1 (rev:1308ebbef19fd914829d06a426a86697b06439dc): 21 december 2015
+- including icon.png for offline use in the Package Manager
+- snippets are now properly included
+
+
+*******************
+1.1.0 (rev:21d0081cc25af1105875f057a5df5edad6f6dde9): 5 December 2015
+- added automatic support for standalone (you can not rename the zsa.descriptors folder anymore)
+- improved Max 7 compatibility
+- added Snippets for Max 7
+- improved reference
+- zsa.roughness: new external (#16)
+- zsa.freqpeak~ automatic attribute (#22)
+- zsa.mel~ automatic attribute (#29)
+- zsa.bark~ automatic attribute (#28)
+- zsa.ampstats~ always have 2 inlets (#27)
+- zsa.dist: improved assistance
+- MacOS 10.7 is now the minimum target
+- zsa.dist: improved assistance
+
+
+*******************
+1.01 (rev:9b94982cdb38d12a88dba3bb95a65924ddf2fbd2): 24 February 2014
+- zsa.descriptors folder can be renamed to whatever you like without breaking zsa.overview
+- added package-info.json
+- zsa.freqpeak~ can output up to 1024 pairs of frequency/amplitudes, and is lock free now
+
+
+*******************
+1.0 (rev:bc63dd02f83b3cbf02717dbf273c44b139976460): 24 March 2013
+- zsa.fund: fixed memory corruption with very high pitches
+- zsa.virtfund: new object which calculates virtual fundamental frequency
+- zsa.virtfund: max_iterations, attribute to set the maximum number of iterations
+- zsa.virtfund: outputs the calculation time (so it helps you to define the maximum number of iterations
+- no more installer / uninstaller, Max 6.1 has packages support, and that's just great!
+- updated documentation to be compatible with Max 6.1: reference and autocompletion.
+- fully Max 6.1 compatible in both 32 bits and 64 bits, how cool is that?
+
+
+*******************
+1.0gm5 (rev:f63d3b798c1f030de3db3910c93276351227e01b): 11 August 2012
+- works properly on 10.5 (10.4 is no longer supported)
+
+
+*******************
+1.0gm4 (r451): 23 May 2012
+- zsa.flux~: new modes for positive, negative and euclidean flux
+- Installation and Uninstallation commands for mac
+- zsa.flatness~ works again in MSP64 (aka Max 6)
+
+
+*******************
+1.0gm3 (r444): 3 Jan 2012
+- zsa.*: 64 bits versions compatible with Max 5 and Max 6
+- zsa.mel~: no longer crash when changing dynamically the number of bands
+- zsa.mel~ now lock free
+- zsa.mfcc~: now lock free
+- zsa.* fix for Modify Read Only support
+
+
+*******************
+1.0gm2 (r407): 5 July 2011
+
+- zsa.dist no longer have dead locks
+- zsa.ampstats~: now has only one inlet in a normal patcher, and 2 in the pfft~ context.
+- zsa.dist: fixed assistance
+- zsa.mel~: fix potential problem of clock freeing
+
+
+*******************
+1.0gm (r399): 12 April 2011 (internal)
+
+- zsa.dist: new outputmode attribute to send out the key or the values out the leftmost outlet
+- zsa.dist: read/write thread protection
+- zsa.dist: fixed memory leak on clear
+- zsa.mel~: fixed memory leak, and thread protection
+- zsa.dist: improved thread safetiness
+- zsa.dist: new output_distances attribute so you can disable the output of the normalized distance, for efficiency reasons
+- zsa.dist: fixed kullback-leibler computation
+- zsa.dist: useweights attribute and weights message to apply weights on the distance calculation
+
+
+*******************
+1.0rc1 (r354): 20 Mai 2010 (internal)
+
+- zsa.dist uses another file format to have a consistent syntax no matter what the type of the key is so it's easier to generate/read...
+
+
+*******************
+1.0b7 (r326): 28 April 2010 (internal)
+
+- zsa.dct: calculates Discrete Cosinus Transform
+- reference documentation
+- zsa.dist can read and write JSON files
+
+
+*******************
+1.0b6 (r270): 1 Feb 2010 (internal)
+
+- fixed splash screen in the MfL context
+- no longer crash when double clicking on the splash screen (introduced in 1.0b5)
+
+*******************
+1.0b5 (r261): 14 Jan 2010
+
+- zsa.freqpeak: no longer outputs negative frequencies (or above Nyquist)
+- zsa.dist now has an append attribute to automatically add a new key (for efficiency reason, doesn't verify that the key exists)
+- zsa.dist quiet attribute suppress the automatic keys output for efficiency reason.
+- zsa.mfcc~ calculates Mel-Frequency cepstrum coefficients
+- improved zsa.mel~ calculation (uses amplification normalization)
+- zsa.freqpeak~ is now thread safe
+- zsa.mel~ is now thread safe
+- splash screen which displays the version
+
+
+*******************
+1.0b4 (r226): 17 July 2009
+
+- overview display properly every item properly on windows
+- zsa.dist new object to calculate various kind of distance on lists (Euclidian, Minkowsky, Cosine, Covariance, Kullback-Leibler)
+
+
+*******************
+1.0b3 (r202): 2 July 2009
+
+- zsa.fund re-works properly (was broken during the windows port)
+
+
+*******************
+1.0b2 (r193): 4 June 2009
+
+- zsa.descriptors initial windows version
+- version history file is now included in the distribution
+- improved help patches
+
+
+*******************
+1.0b1 (r180): 27 May 2009
+Initial public release

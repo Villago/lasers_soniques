@@ -1,0 +1,179 @@
+{
+  "zsa.ampstats~": {
+    "digest": "Report min/mean/max/sum of a signal vector or a FFT frame.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.bark~": {
+    "digest": "Calculates and outputs Bark coefficients as a list.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.centroid~": {
+    "digest": "Spectral centroid is the barycentre of the spectrum.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.dct": {
+    "digest": "Calculates and outputs Discrete Cosine Transform",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "Math"
+    ]
+  },
+  "zsa.decrease": {
+    "digest": "Decrease reports the amount of spectral magnitude decreasing.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "Math"
+    ]
+  },
+  "zsa.decrease~": {
+    "digest": "Decrease reports the amount of spectral magnitude decreasing.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.dist": {
+    "digest": "Find the closest list.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "Math",
+      "Lists"
+    ]
+  },
+  "zsa.energy~": {
+    "digest": "Calculates the energy of each Frequency Bin (r * r + i * i).",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.flatness~": {
+    "digest": "Spectral flatness of key frequency bands.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.flux~": {
+    "digest": "Calculates spectral flux (difference of energy between frames).",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.freqpeak~": {
+    "digest": "Extract a list of pairs Frequency / Amplitude peaks by FFT frame.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.fund": {
+    "digest": "Estimate fundamental frequency of a list of Frequency / Amplitude Pairs.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.kurtosis~": {
+    "digest": "zsa.kurtosis~ returns a measure of the flatness of a spectrum around its barycenter.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.mel~": {
+    "digest": "Calculates and outputs Mel Coefficients as a list.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.mfcc~": {
+    "digest": "Outputs Mel-frequency cepstral coefficients as a list.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.rolloff~": {
+    "digest": "zsa.rolloff~ returns the spectral rollof point.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.roughness": {
+    "digest": "Calculate roughness of partials.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.skewness~": {
+    "digest": "zsa.skewness~ returns a measure of the asymmetry of a spectrum around its barycenter.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.slope": {
+    "digest": "zsa.slope returns an estimation of the amount of spectral magnitude decreasing, computed by a linear regression on a numeric spectral magnitude list.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.slope~": {
+    "digest": "zsa.slope~ returns an estimation of the amount of spectral magnitude decreasing.",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.spread~": {
+    "digest": "zsa.spread~ returns the spectral spread, i.e., the variance around the spectral barycenter",
+    "module": "msp",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  },
+  "zsa.virtfund": {
+    "digest": "Tries to calculate the virtual fundamental.",
+    "module": "max",
+    "category": [
+      "Zsa.descriptors",
+      "MSP Analysis"
+    ]
+  }
+}

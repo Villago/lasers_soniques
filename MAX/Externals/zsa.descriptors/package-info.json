@@ -1,0 +1,47 @@
+{
+	"author" : "Mikhail Malt, Emmanuel Jourdan",
+	"authors" : [  ],
+	"description" : "Zsa.descriptors is a library for real-time sound descriptors analysis for Max.",
+	"displayname" : "",
+	"extends" : "",
+	"extensible" : 0,
+	"homepatcher" : "zsa.overview.maxpat",
+	"max_version_max" : "none",
+	"max_version_min" : "8.0",
+	"name" : "zsa.descriptors",
+	"os" : 	{
+		"macintosh" : 		{
+			"platform" : [ "x64" ],
+			"min_version" : "10.9.x"
+		}
+,
+		"windows" : 		{
+			"platform" : [ "x64" ],
+			"min_version" : "7"
+		}
+
+	}
+,
+	"package_extra" : 	{
+
+	}
+,
+	"tags" : [ "sound descriptors", "analysis" ],
+	"version" : "1.2.0",
+	"website" : "http://www.e--j.com/index.php/what-is-zsa-descriptors/",
+	"filelist" : 	{
+		"examples" : [ "granular_mel-synth/single-grain03.maxpat", "granular_mel-synth/zsa.granular_synth_driven_by_analysis_01.maxpat", "zsa.consones_01.maxpat", "zsa.save_to_file.maxpat", "zsa.spectral_flux_gate/zsa.spectral_flux_gate.maxpat", "zsa.spectral_flux_gate/zsa.spectral_flux_gate_main.maxpat" ],
+		"extensions" : [ "zsa.descriptors.mxe64", "zsa.descriptors.mxo" ],
+		"externals" : [ "zsa.ampstats~.mxe64", "zsa.ampstats~.mxo", "zsa.bark~.mxe64", "zsa.bark~.mxo", "zsa.centroid~.mxe64", "zsa.centroid~.mxo", "zsa.dct.mxe64", "zsa.dct.mxo", "zsa.decrease.mxe64", "zsa.decrease.mxo", "zsa.decrease~.mxe64", "zsa.decrease~.mxo", "zsa.dist.mxe64", "zsa.dist.mxo", "zsa.energy~.mxe64", "zsa.energy~.mxo", "zsa.flatness~.mxe64", "zsa.flatness~.mxo", "zsa.flux~.mxe64", "zsa.flux~.mxo", "zsa.freqpeak~.mxe64", "zsa.freqpeak~.mxo", "zsa.fund.mxe64", "zsa.fund.mxo", "zsa.kurtosis~.mxe64", "zsa.kurtosis~.mxo", "zsa.mel~.mxe64", "zsa.mel~.mxo", "zsa.mfcc~.mxe64", "zsa.mfcc~.mxo", "zsa.rolloff~.mxe64", "zsa.rolloff~.mxo", "zsa.roughness.mxe64", "zsa.roughness.mxo", "zsa.skewness~.mxe64", "zsa.skewness~.mxo", "zsa.slope.mxe64", "zsa.slope.mxo", "zsa.slope~.mxe64", "zsa.slope~.mxo", "zsa.spread~.mxe64", "zsa.spread~.mxo", "zsa.virtfund.mxe64", "zsa.virtfund.mxo" ],
+		"help" : [ "zsa.ampstats~.maxhelp", "zsa.bark~.maxhelp", "zsa.centroid~.maxhelp", "zsa.dct.maxhelp", "zsa.decrease.maxhelp", "zsa.decrease~.maxhelp", "zsa.dist.maxhelp", "zsa.energy~.maxhelp", "zsa.flatness~.maxhelp", "zsa.flux~.maxhelp", "zsa.freqpeak~.maxhelp", "zsa.fund.maxhelp", "zsa.kurtosis~.maxhelp", "zsa.mel~.maxhelp", "zsa.mfcc~.maxhelp", "zsa.rolloff~.maxhelp", "zsa.roughness.maxhelp", "zsa.skewness~.maxhelp", "zsa.slope.maxhelp", "zsa.slope~.maxhelp", "zsa.spread~.maxhelp", "zsa.virtfund.maxhelp" ],
+		"interfaces" : [ "zsa.descriptors-obj-qlookup.json" ],
+		"media" : [ "zsa.splash.png" ],
+		"misc" : [ "zsa.abs_all.maxpat", "zsa.abs_ampstats~.maxpat", "zsa.abs_bark_mel~.maxpat", "zsa.abs_bark~.maxpat", "zsa.abs_centroid_spread.maxpat", "zsa.abs_centroid~.maxpat", "zsa.abs_decrease~.maxpat", "zsa.abs_derivative.maxpat", "zsa.abs_flatness~.maxpat", "zsa.abs_flux~.maxpat", "zsa.abs_freqpeak~.maxpat", "zsa.abs_kurtosis~.maxpat", "zsa.abs_mel~.maxpat", "zsa.abs_mfcc~.maxpat", "zsa.abs_rolloff~.maxpat", "zsa.abs_skewness~.maxpat", "zsa.abs_slope~.maxpat", "zsa.abs_spread~.maxpat", "zsa.easy_ampstats~.maxpat", "zsa.easy_bark~.maxpat", "zsa.easy_centroid~.maxpat", "zsa.easy_decrease~.maxpat", "zsa.easy_flatness~.maxpat", "zsa.easy_flux~.maxpat", "zsa.easy_freqpeak~.maxpat", "zsa.easy_kurtosis~.maxpat", "zsa.easy_mel~.maxpat", "zsa.easy_mfcc~.maxpat", "zsa.easy_rolloff~.maxpat", "zsa.easy_skewness~.maxpat", "zsa.easy_slope~.maxpat", "zsa.easy_spread~.maxpat", "zsa.open.maxpat", "zsa.seealso.maxpat" ],
+		"docs" : [ "_c74_common.css", "_c74_common.xml", "_c74_common.xsl", "_c74_compat.html", "_c74_platform.xsl", "_c74_ref.xsl", "_c74_ref_common.xsl", "_c74_vig.xsl", "_c74_vig_common.xsl", "images/zsa.ampstats~.png", "images/zsa.bark~.png", "images/zsa.centroid~.png", "images/zsa.dct.png", "images/zsa.decrease.png", "images/zsa.decrease~.png", "images/zsa.dist.png", "images/zsa.energy~.png", "images/zsa.flatness~.png", "images/zsa.flux~.png", "images/zsa.freqpeak~.png", "images/zsa.fund.png", "images/zsa.kurtosis~.png", "images/zsa.mel~.png", "images/zsa.mfcc~.png", "images/zsa.rolloff~.png", "images/zsa.skewness~.png", "images/zsa.slope.png", "images/zsa.slope~.png", "images/zsa.spread~.png", "zsa.ampstats~.maxref.xml", "zsa.bark~.maxref.xml", "zsa.centroid~.maxref.xml", "zsa.dct.maxref.xml", "zsa.decrease.maxref.xml", "zsa.decrease~.maxref.xml", "zsa.dist.maxref.xml", "zsa.energy~.maxref.xml", "zsa.flatness~.maxref.xml", "zsa.flux~.maxref.xml", "zsa.freqpeak~.maxref.xml", "zsa.fund.maxref.xml", "zsa.kurtosis~.maxref.xml", "zsa.mel~.maxref.xml", "zsa.mfcc~.maxref.xml", "zsa.rolloff~.maxref.xml", "zsa.roughness.maxref.xml", "zsa.skewness~.maxref.xml", "zsa.slope.maxref.xml", "zsa.slope~.maxref.xml", "zsa.spread~.maxref.xml", "zsa.virtfund.maxref.xml" ],
+		"javascript" : [ "zsa.utils.js" ],
+		"extras" : [ "zsa.overview.maxpat" ]
+	}
+,
+	"c74install" : 1,
+	"installdate" : 3633881288
+}
